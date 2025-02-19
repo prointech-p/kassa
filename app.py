@@ -1,6 +1,5 @@
-import requests
 import json
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, redirect, jsonify
 import os
 from dotenv import load_dotenv
 from paykassa import PayKassa
@@ -27,7 +26,7 @@ def get_paykassa_pro_link():
     # Generate payment link
     response = paykassa.sci_create_order(
         order_id="12345",
-        amount="100",
+        amount="0.005",
         currency="BTC",
         system=11,  # BTC
         comment="Test payment"
@@ -35,7 +34,10 @@ def get_paykassa_pro_link():
 
     print(response['data']['url'])
     print(response)  # Check response for payment URL
-    return jsonify(response)
+    if response['error']:
+        return "Ошибка при проведении оплаты!"
+    else:
+        return redirect(response["data"]["url"])
 
 
 @app.route('/paykassa_confirm', methods=['GET', 'POST'])
