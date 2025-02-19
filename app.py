@@ -54,11 +54,7 @@ def paykassa_confirm():
     print("POST Params:", post_params)
     print("JSON Data:", json_data)
 
-    return jsonify({
-        "GET Params": get_params,
-        "POST Params": post_params,
-        "JSON Data": json_data
-    })
+    return '12345|success'
 
 
 @app.route('/')
