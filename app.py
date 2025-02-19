@@ -67,4 +67,4 @@ def hello_world():
 
 
 if __name__ == "__main__":
-    app.run(threaded=True,host='localhost', port=5000, debug=True)
+    app.run(debug=True)
