@@ -20,7 +20,7 @@ def get_paykassa_pro_link():
         sci_id=app.config['PAYKASSA_SCI_ID'] ,
         sci_key=app.config['PAYKASSA_SCI_KEY'],
         domain=app.config['PAYKASSA_DOMAIN'],
-        test=True
+        test=False
     )
 
     # Generate payment link
